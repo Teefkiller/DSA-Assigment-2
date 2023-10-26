@@ -9,12 +9,6 @@ type User record {
     string role; // Add a 'role' field (HoD, Employee, Supervisor)
 };
 
-type HOD record {
-    string id;
-    string name;
-     
-};
-
 type Objective record {
     string id;
     string department;
