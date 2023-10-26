@@ -1,0 +1,64 @@
+type User record {
+    string id;
+    string firstName;
+    string lastName;
+    string role; // Add a 'role' field (HoD, Employee, Supervisor)
+};
+
+type HOD record {
+    string id;
+    string name;
+     
+};
+
+type Objective record {
+    string id;
+    string department;
+    string description;
+    float weight;
+};
+
+type KPI record {
+    string id;
+    string employeeId;
+    string description;
+    string unit;
+    float weight;
+};
+
+type Score record {
+    string id;
+    string employeeId;
+    string kpiId;
+    float value;
+};
+
+type Assignment record {
+    string id;
+    string employeeId;
+    string supervisorId;
+};
+
+
+type Query {
+  user(username: String, password: String): User
+  departmentObjectives: [DepartmentObjective]
+  KPIs: [KPI]
+  performanceScores(kpiId: String): [PerformanceScore]
+  supervisorEmployeeRelationships(supervisorId: String, employeeId: String): [SupervisorEmplRelationship]
+}
+
+type Mutation {
+  registerUser(username: String, password: String): String
+  changePassword(username: String, password: String): String
+  addUser(user: User): String
+  addDepartmentObjective(departmentObjective: DepartmentObjective): String
+  addKPI(kpi: KPI): String
+  addPerformanceScore(performanceScore: PerformanceScore): String
+  addSupervisorEmployeeRelationship(relationship: SupervisorEmplRelationship): String
+  updateKPI(updatedKPI: UpdatedKpiDetails): String
+  deleteDepartmentObjective(departmentId: String): String
+  deleteKPI(kpiId: String): String
+  deletePerformanceScore(kpiId: String): String
+  deleteSupervisorEmployeeRelationship(supervisorId: String, employeeId: String): String
+}
